@@ -1,43 +1,74 @@
+import fs from "fs/promises";
+import path from "path";
 import { Book } from "@/models/book";
 import { BookDTO } from "@/interfaces/bookDTO";
 import { BookService } from "@/services/bookService";
 
-export class BookServiceImpl implements BookService {
-  private books: Book[] = [];
+// const dbPath = path.resolve(__dirname, "@/data/db.json");
+const dbPath = path.resolve(__dirname, "../../data/db.json");
 
-  public getBooks(): Book[] {
-    return this.books;
+export class BookServiceImpl implements BookService {
+  private async readFromFile(): Promise<Book[]> {
+    try {
+      const data = await fs.readFile(dbPath, "utf-8");
+      return JSON.parse(data) as Book[];
+    } catch (error) {
+      return [];
+    }
   }
 
-  public getBookById(id: number): Book | null {
-    const book = this.books.find((b) => b.id === id);
+  private async writeToFile(books: Book[]): Promise<void> {
+    try {
+      await fs.writeFile(dbPath, JSON.stringify(books, null, 2), "utf-8");
+    } catch (error) {
+      console.error("Error writing to file", error);
+    }
+  }
+
+  public async getBooks(): Promise<Book[]> {
+    return await this.readFromFile();
+  }
+
+  public async getBookById(id: number): Promise<Book | null> {
+    const books = await this.readFromFile();
+    const book = books.find((b) => b.id === id);
     return book || null;
   }
 
-  public addBook(bookData: BookDTO): Book {
+  public async addBook(bookData: BookDTO): Promise<Book | string> {
+    const books = await this.readFromFile();
+    const existingBook = books.find(book => book.name === bookData.name);
+    if (existingBook) {
+      return "Book with the same name already exists";
+    }
+    
     const newBook = new Book(
-      this.books.length + 1,
+      books.length + 1, 
       bookData.name,
       bookData.author,
       bookData.publishedYear
     );
-    this.books.push(newBook);
+
+    books.push(newBook);
+    await this.writeToFile(books);
+
     return newBook;
   }
 
-  public updateBook(id: number, bookData: BookDTO): Book | null {
-    const bookIndex = this.books.findIndex((b) => b.id === id);
+  public async updateBook(id: number, bookData: BookDTO): Promise<Book | null> {
+    const books = await this.readFromFile();
+    const bookIndex = books.findIndex((b) => b.id === id);
     if (bookIndex === -1) return null;
 
-    const updatedBook = { ...this.books[bookIndex], ...bookData };
-    this.books[bookIndex] = updatedBook;
+    const updatedBook = { ...books[bookIndex], ...bookData };
+    books[bookIndex] = updatedBook;
+    await this.writeToFile(books);
     return updatedBook;
   }
 
-  public deleteBook(id: number): void {
-    const bookIndex = this.books.findIndex((b) => b.id === id);
-    if (bookIndex !== -1) {
-      this.books.splice(bookIndex, 1);
-    }
+  public async deleteBook(id: number): Promise<void> {
+    let books = await this.readFromFile();
+    books = books.filter((b) => b.id !== id);
+    await this.writeToFile(books);
   }
 }

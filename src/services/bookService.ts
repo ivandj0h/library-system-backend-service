@@ -2,9 +2,9 @@ import { Book } from "@/models/book";
 import { BookDTO } from "@/interfaces/bookDTO";
 
 export interface BookService {
-  getBooks(): Book[];
-  getBookById(id: number): Book | null;
-  addBook(bookData: BookDTO): Book;
-  updateBook(id: number, bookData: BookDTO): Book | null;
-  deleteBook(id: number): void;
+  getBooks(): Promise<Book[]>;
+  getBookById(id: number): Promise<Book | null>;
+  addBook(bookData: BookDTO): Promise<Book | string>;
+  updateBook(id: number, bookData: BookDTO): Promise<Book | null>;
+  deleteBook(id: number): Promise<void>;
 }

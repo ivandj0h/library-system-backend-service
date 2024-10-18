@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { BookService } from "../services/bookService";
-import { Book } from "../models/book";
+import { BookServiceImpl } from "@/services/bookServiceImpl";
+import { BookService } from "@/services/bookService";
 
 export class BookController {
   private bookService: BookService;
 
   constructor() {
-    this.bookService = new BookService();
+    this.bookService = new BookServiceImpl();
   }
 
   public welcomeMessage(req: Request, res: Response): void {

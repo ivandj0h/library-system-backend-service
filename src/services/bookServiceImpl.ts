@@ -1,6 +1,6 @@
-import { BookService } from "../interfaces/bookService";
-import { Book } from "../models/book";
-import { BookDTO } from "../interfaces/bookDTO";
+import { Book } from "@/models/book";
+import { BookDTO } from "@/interfaces/bookDTO";
+import { BookService } from "@/services/bookService";
 
 export class BookServiceImpl implements BookService {
   private books: Book[] = [];

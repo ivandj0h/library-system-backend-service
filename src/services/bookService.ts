@@ -1,5 +1,5 @@
-import { Book } from "../models/book";
-import { BookDTO } from "./bookDTO";
+import { Book } from "@/models/book";
+import { BookDTO } from "@/interfaces/bookDTO";
 
 export interface BookService {
   getBooks(): Book[];

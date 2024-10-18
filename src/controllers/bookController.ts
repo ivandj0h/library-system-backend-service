@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
-import { BookServiceImpl } from "@/services/bookServiceImpl";
 import { BookService } from "@/services/bookService";
+import { BookServiceImpl } from "@/services/bookServiceImpl";
+import { sendResponse } from "@/utils/helpers";
+import { Messages, StatusCodes } from "@/constants/constants";
 
 export class BookController {
   private bookService: BookService;
@@ -10,18 +12,18 @@ export class BookController {
   }
 
   public welcomeMessage(req: Request, res: Response): void {
-    res.send("Welcome to the Library API!");
+    sendResponse(res, StatusCodes.OK, Messages.WELCOME);
   }
 
   public getAllBooks(req: Request, res: Response): void {
     const books = this.bookService.getBooks();
-    res.json(books);
+    sendResponse(res, StatusCodes.OK, Messages.BOOKS_FETCHED, books);
   }
 
   public addBook(req: Request, res: Response): void {
     const { name, author, publishedYear } = req.body;
     const book = this.bookService.addBook({ name, author, publishedYear });
-    res.status(201).json(book);
+    sendResponse(res, StatusCodes.CREATED, Messages.BOOK_ADDED, book);
   }
 
   public updateBook(req: Request, res: Response): void {
@@ -32,12 +34,17 @@ export class BookController {
       author,
       publishedYear,
     });
-    res.json(updatedBook);
+
+    if (updatedBook) {
+      sendResponse(res, StatusCodes.OK, Messages.BOOK_UPDATED, updatedBook);
+    } else {
+      sendResponse(res, StatusCodes.NOT_FOUND, Messages.BOOK_NOT_FOUND);
+    }
   }
 
   public deleteBook(req: Request, res: Response): void {
     const { id } = req.params;
     this.bookService.deleteBook(Number(id));
-    res.status(204).send();
+    sendResponse(res, StatusCodes.NO_CONTENT, Messages.BOOK_DELETED);
   }
 }

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { BookController } from "../controllers/bookController";
+import { BookController } from "@/controllers/bookController";
 
 class BookRoutes {
   public router: Router;

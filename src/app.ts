@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import cors from "cors";
 import bookRoutes from "@/routes/bookRoutes";
 import { authenticate } from "@/middleware/auth";
 import { logger } from "@/middleware/logger";
@@ -20,6 +21,13 @@ class App {
   }
 
   private initializeMiddlewares() {
+    this.app.use(
+      cors({
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+      })
+    );
     this.app.use(bodyParser.json());
     this.app.use(logger);
   }

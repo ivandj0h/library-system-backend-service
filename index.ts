@@ -1,9 +1,8 @@
 import dotenv from "dotenv";
-import App from "@/app";
 import { createServer } from "http";
 import { AddressInfo } from "net";
+import App from "@/app";
 
-// Load environment variables
 dotenv.config();
 
 const appInstance = new App();

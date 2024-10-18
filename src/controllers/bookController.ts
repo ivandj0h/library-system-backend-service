@@ -11,22 +11,22 @@ export class BookController {
     this.bookService = new BookServiceImpl();
   }
 
-  public welcomeMessage(req: Request, res: Response): void {
+  public welcomeMessage = (req: Request, res: Response): void => {
     sendResponse(res, StatusCodes.OK, Messages.WELCOME);
-  }
+  };
 
-  public getAllBooks(req: Request, res: Response): void {
+  public getAllBooks = (req: Request, res: Response): void => {
     const books = this.bookService.getBooks();
     sendResponse(res, StatusCodes.OK, Messages.BOOKS_FETCHED, books);
-  }
+  };
 
-  public addBook(req: Request, res: Response): void {
+  public addBook = (req: Request, res: Response): void => {
     const { name, author, publishedYear } = req.body;
     const book = this.bookService.addBook({ name, author, publishedYear });
     sendResponse(res, StatusCodes.CREATED, Messages.BOOK_ADDED, book);
-  }
+  };
 
-  public updateBook(req: Request, res: Response): void {
+  public updateBook = (req: Request, res: Response): void => {
     const { id } = req.params;
     const { name, author, publishedYear } = req.body;
     const updatedBook = this.bookService.updateBook(Number(id), {
@@ -40,11 +40,11 @@ export class BookController {
     } else {
       sendResponse(res, StatusCodes.NOT_FOUND, Messages.BOOK_NOT_FOUND);
     }
-  }
+  };
 
-  public deleteBook(req: Request, res: Response): void {
+  public deleteBook = (req: Request, res: Response): void => {
     const { id } = req.params;
     this.bookService.deleteBook(Number(id));
     sendResponse(res, StatusCodes.NO_CONTENT, Messages.BOOK_DELETED);
-  }
+  };
 }

@@ -1,14 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import fs from "fs";
-import path from "path";
 import { StatusCodes, Messages } from "@/constants/constants";
-
-// Decode Base64 token
-const decodeToken = (encodedToken: string) => {
-  return Buffer.from(encodedToken, "base64").toString("utf-8");
-};
-
-const tokenPath = path.resolve(__dirname, "../../data/token.json");
+import { getDecodedToken } from "@/utils/auth";
 
 export const authenticate = (
   req: Request,
@@ -26,8 +18,7 @@ export const authenticate = (
     return;
   }
 
-  const tokenData = JSON.parse(fs.readFileSync(tokenPath, "utf-8"));
-  const decodedToken = decodeToken(tokenData.token);
+  const decodedToken = getDecodedToken();
 
   if (authHeader !== decodedToken) {
     res.status(StatusCodes.UNAUTHORIZED).json({
@@ -38,5 +29,5 @@ export const authenticate = (
     return;
   }
 
-  next(); // Continue if token is valid
+  next();
 };

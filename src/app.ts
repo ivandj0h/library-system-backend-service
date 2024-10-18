@@ -20,11 +20,10 @@ class App {
 
   private initializeMiddlewares() {
     this.app.use(bodyParser.json());
-    this.app.use(authenticate);
   }
 
   private initializeRoutes() {
-    this.app.use(BaseURL.API, bookRoutes);
+    this.app.use(BaseURL.API, authenticate, bookRoutes);
   }
 
   public listen() {

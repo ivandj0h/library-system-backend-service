@@ -11,18 +11,21 @@ export class BookController {
     this.bookService = new BookServiceImpl();
   }
 
+  // Welcome message
   public welcomeMessage = (req: Request, res: Response): void => {
     sendResponse(res, StatusCodes.OK, Messages.WELCOME);
   };
 
+  // Get all books
   public getAllBooks = async (req: Request, res: Response): Promise<void> => {
     const books = await this.bookService.getBooks();
     sendResponse(res, StatusCodes.OK, Messages.BOOKS_FETCHED, books);
   };
 
+  // Get a book by id
   public getBookById = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
-    const book = await this.bookService.getBookById(Number(id));
+    const book = await this.bookService.getBookById(id);
 
     if (book) {
       sendResponse(res, StatusCodes.OK, "Book fetched successfully", book);
@@ -31,6 +34,7 @@ export class BookController {
     }
   };
 
+  // Add a book
   public addBook = async (req: Request, res: Response): Promise<void> => {
     const { name, author, publishedYear } = req.body;
     const result = await this.bookService.addBook({
@@ -46,10 +50,11 @@ export class BookController {
     }
   };
 
+  // Update a book
   public updateBook = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
     const { name, author, publishedYear } = req.body;
-    const updatedBook = await this.bookService.updateBook(Number(id), {
+    const updatedBook = await this.bookService.updateBook(id, {
       name,
       author,
       publishedYear,
@@ -62,9 +67,10 @@ export class BookController {
     }
   };
 
+  // Delete a book
   public deleteBook = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
-    await this.bookService.deleteBook(Number(id));
+    await this.bookService.deleteBook(id);
     sendResponse(res, StatusCodes.NO_CONTENT, Messages.BOOK_DELETED);
   };
 }

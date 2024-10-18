@@ -20,6 +20,17 @@ export class BookController {
     sendResponse(res, StatusCodes.OK, Messages.BOOKS_FETCHED, books);
   };
 
+  public getBookById = (req: Request, res: Response): void => {
+    const { id } = req.params;
+    const book = this.bookService.getBookById(Number(id));
+
+    if (book) {
+      sendResponse(res, StatusCodes.OK, "Book fetched successfully", book);
+    } else {
+      sendResponse(res, StatusCodes.NOT_FOUND, Messages.BOOK_NOT_FOUND);
+    }
+  };
+
   public addBook = (req: Request, res: Response): void => {
     const { name, author, publishedYear } = req.body;
     const book = this.bookService.addBook({ name, author, publishedYear });

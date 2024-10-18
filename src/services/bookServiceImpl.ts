@@ -9,6 +9,11 @@ export class BookServiceImpl implements BookService {
     return this.books;
   }
 
+  public getBookById(id: number): Book | null {
+    const book = this.books.find((b) => b.id === id);
+    return book || null;
+  }
+
   public addBook(bookData: BookDTO): Book {
     const newBook = new Book(
       this.books.length + 1,

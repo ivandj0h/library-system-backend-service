@@ -14,6 +14,7 @@ class BookRoutes {
   private initializeRoutes() {
     this.router.get("/", this.bookController.welcomeMessage);
     this.router.get("/books", this.bookController.getAllBooks);
+    this.router.get("/books/:id", this.bookController.getBookById);
     this.router.post("/books", this.bookController.addBook);
     this.router.put("/books/:id", this.bookController.updateBook);
     this.router.delete("/books/:id", this.bookController.deleteBook);

@@ -18,13 +18,19 @@ describe("BookServiceImpl", () => {
           id: book1Id,
           title: "Book 1",
           author: "Author 1",
-          publishedYear: 2020,
+          description: "Description",
+          year: 2022,
+          page: 250,
+          publisher: 2020,
         },
         {
           id: book2Id,
           title: "Book 2",
           author: "Author 2",
-          publishedYear: 2021,
+          description: "Description",
+          year: 2022,
+          page: 250,
+          publisher: 2020,
         },
       ]),
     });
@@ -49,18 +55,24 @@ describe("BookServiceImpl", () => {
     const newBook: BookDTO = {
       title: "New Book",
       author: "New Author",
-      publishedYear: 2023,
+      description: "New Description",
+      year: 2025,
+      page: 300,
+      publisher: "2023 Publisher",
     };
 
     const addedBook = await bookService.addBook(newBook);
-    expect(addedBook).toHaveProperty("name", "New Book");
+    expect(addedBook).toHaveProperty("title", "New Book");
   });
 
   test("should not add a book with existing name", async () => {
     const duplicateBook: BookDTO = {
       title: "Book 1",
       author: "Author 1",
-      publishedYear: 2023,
+      description: "Description",
+      year: 2022,
+      page: 250,
+      publisher: "2023 Publisher",
     };
 
     const result = await bookService.addBook(duplicateBook);
@@ -71,7 +83,10 @@ describe("BookServiceImpl", () => {
     const updatedBook: BookDTO = {
       title: "Updated Book 1",
       author: "Updated Author 1",
-      publishedYear: 2025,
+      description: "Updated Description",
+      year: 2025,
+      page: 300,
+      publisher: "Updated Publisher",
     };
 
     const result = await bookService.updateBook(book1Id, updatedBook);

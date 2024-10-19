@@ -36,11 +36,14 @@ export class BookController {
 
   // Add a book
   public addBook = async (req: Request, res: Response): Promise<void> => {
-    const { title, author, publishedYear } = req.body;
+    const { title, author, description, year, page, publisher } = req.body;
     const result = await this.bookService.addBook({
       title,
       author,
-      publishedYear,
+      description,
+      year,
+      page,
+      publisher,
     });
 
     if (typeof result === "string") {
@@ -53,11 +56,14 @@ export class BookController {
   // Update a book
   public updateBook = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
-    const { title, author, publishedYear } = req.body;
+    const { title, author, description, year, page, publisher } = req.body;
     const updatedBook = await this.bookService.updateBook(id, {
       title,
       author,
-      publishedYear,
+      description,
+      year,
+      page,
+      publisher,
     });
 
     if (updatedBook) {

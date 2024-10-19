@@ -221,4 +221,4 @@ npm run test
 
 ## Credits
 
-[ivandjohe](https://linkedin.com/in/ivandjoh)
+[ivandjoh](https://linkedin.com/in/ivandjoh)

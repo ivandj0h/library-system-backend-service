@@ -16,10 +16,19 @@ export class BookController {
     sendResponse(res, StatusCodes.OK, Messages.WELCOME);
   };
 
-  // Get all books
+  // Get all books without pagination and with flat "data" array
   public getAllBooks = async (req: Request, res: Response): Promise<void> => {
-    const books = await this.bookService.getBooks();
-    sendResponse(res, StatusCodes.OK, Messages.BOOKS_FETCHED, books);
+    try {
+      const books = await this.bookService.getBooks();
+      sendResponse(res, StatusCodes.OK, Messages.BOOKS_FETCHED, books);
+    } catch (error) {
+      sendResponse(
+        res,
+        StatusCodes.INTERNAL_SERVER_ERROR,
+        Messages.ERROR_FETCHING_BOOKS,
+        null
+      );
+    }
   };
 
   // Get a book by id

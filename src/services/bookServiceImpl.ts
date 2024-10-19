@@ -71,7 +71,11 @@ export class BookServiceImpl implements BookService {
     const bookIndex = books.findIndex((b) => b.id === id);
     if (bookIndex === -1) return null;
 
-    const updatedBook = { ...books[bookIndex], ...bookData };
+    const updatedBook = {
+      ...books[bookIndex],
+      ...bookData,
+      id: books[bookIndex].id,
+    };
     books[bookIndex] = updatedBook;
     await this.writeToFile(books);
 

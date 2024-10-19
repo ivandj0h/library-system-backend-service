@@ -44,14 +44,14 @@ export class BookServiceImpl implements BookService {
   public async addBook(bookData: BookDTO): Promise<Book | string> {
     const books = await this.readFromFile();
 
-    const existingBook = books.find((book) => book.name === bookData.name);
+    const existingBook = books.find((book) => book.title === bookData.title);
     if (existingBook) {
       return "Book with the same name already exists";
     }
 
     const newBook = new Book(
       uuidv4(),
-      bookData.name,
+      bookData.title,
       bookData.author,
       bookData.publishedYear
     );

@@ -1,8 +1,11 @@
 [
   {
-    "id": "832ad524-9c2b-4f67-99ca-886a8a3b0a43",
-    "title": "napoleon hill",
-    "author": "ivan",
-    "publishedYear": 2019
+    "id": "038c14e4-8af3-4c9d-981a-d8a888a5a998",
+    "title": "Updated Book Title",
+    "author": "Updated Author",
+    "description": "ini adalah deskripsi",
+    "page": 120,
+    "publisher": "gramedia",
+    "year": 2024
   }
 ]

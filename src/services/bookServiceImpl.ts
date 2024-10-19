@@ -53,7 +53,10 @@ export class BookServiceImpl implements BookService {
       uuidv4(),
       bookData.title,
       bookData.author,
-      bookData.publishedYear
+      bookData.description,
+      bookData.year,
+      bookData.page,
+      bookData.publisher
     );
 
     books.push(newBook);

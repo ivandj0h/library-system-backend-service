@@ -1,7 +1,11 @@
 interface BookDTO {
+  id: string;
   title: string;
   author: string;
-  publishedYear: number;
+  description: string;
+  year: number;
+  page: number;
+  publisher: string;
 }
 
 export { BookDTO };

@@ -2,13 +2,27 @@ class Book {
   public id: string;
   public title: string;
   public author: string;
-  public publishedYear: number;
+  public description: string;
+  public year: number;
+  public page: number;
+  public publisher: string;
 
-  constructor(id: string, name: string, author: string, publishedYear: number) {
+  constructor(
+    id: string,
+    title: string,
+    author: string,
+    description: string,
+    year: number,
+    page: number,
+    publisher: string
+  ) {
     this.id = id;
-    this.title = name;
+    this.title = title;
     this.author = author;
-    this.publishedYear = publishedYear;
+    this.description = description;
+    this.year = year;
+    this.page = page;
+    this.publisher = publisher;
   }
 }
 

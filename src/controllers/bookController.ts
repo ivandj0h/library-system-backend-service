@@ -36,9 +36,9 @@ export class BookController {
 
   // Add a book
   public addBook = async (req: Request, res: Response): Promise<void> => {
-    const { name, author, publishedYear } = req.body;
+    const { title, author, publishedYear } = req.body;
     const result = await this.bookService.addBook({
-      name,
+      title,
       author,
       publishedYear,
     });
@@ -53,9 +53,9 @@ export class BookController {
   // Update a book
   public updateBook = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
-    const { name, author, publishedYear } = req.body;
+    const { title, author, publishedYear } = req.body;
     const updatedBook = await this.bookService.updateBook(id, {
-      name,
+      title,
       author,
       publishedYear,
     });

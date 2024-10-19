@@ -16,13 +16,13 @@ describe("BookServiceImpl", () => {
       "data/db.json": JSON.stringify([
         {
           id: book1Id,
-          name: "Book 1",
+          title: "Book 1",
           author: "Author 1",
           publishedYear: 2020,
         },
         {
           id: book2Id,
-          name: "Book 2",
+          title: "Book 2",
           author: "Author 2",
           publishedYear: 2021,
         },
@@ -42,12 +42,12 @@ describe("BookServiceImpl", () => {
   test("should get book by ID", async () => {
     const book = await bookService.getBookById(book1Id);
     expect(book).toBeDefined();
-    expect(book?.name).toBe("Book 1");
+    expect(book?.title).toBe("Book 1");
   });
 
   test("should add a new book", async () => {
     const newBook: BookDTO = {
-      name: "New Book",
+      title: "New Book",
       author: "New Author",
       publishedYear: 2023,
     };
@@ -58,7 +58,7 @@ describe("BookServiceImpl", () => {
 
   test("should not add a book with existing name", async () => {
     const duplicateBook: BookDTO = {
-      name: "Book 1",
+      title: "Book 1",
       author: "Author 1",
       publishedYear: 2023,
     };
@@ -69,14 +69,14 @@ describe("BookServiceImpl", () => {
 
   test("should update an existing book", async () => {
     const updatedBook: BookDTO = {
-      name: "Updated Book 1",
+      title: "Updated Book 1",
       author: "Updated Author 1",
       publishedYear: 2025,
     };
 
     const result = await bookService.updateBook(book1Id, updatedBook);
     expect(result).toBeDefined();
-    expect(result?.name).toBe("Updated Book 1");
+    expect(result?.title).toBe("Updated Book 1");
   });
 
   test("should delete a book", async () => {

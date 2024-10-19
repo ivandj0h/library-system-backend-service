@@ -1,5 +1,5 @@
 interface BookDTO {
-  name: string;
+  title: string;
   author: string;
   publishedYear: number;
 }

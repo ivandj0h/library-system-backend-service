@@ -11,6 +11,7 @@ export const Messages = {
   BOOK_UPDATED: "Book updated successfully",
   BOOK_DELETED: "Book deleted successfully",
   BOOK_NOT_FOUND: "Book not found",
+  ERROR_FETCHING_BOOKS: "Error fetching books",
 };
 
 export const StatusCodes = {

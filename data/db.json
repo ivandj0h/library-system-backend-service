@@ -1,19 +1,29 @@
 [
   {
-    "id": "038c14e4-8af3-4c9d-981a-d8a888a5a998",
-    "title": "Updated Book Title",
-    "author": "Updated Author",
-    "description": "ini adalah deskripsi",
-    "page": 120,
-    "publisher": "gramedia",
-    "year": 2024
+    "id": "26e70156-144c-494b-bf81-c2d9857a8f55",
+    "title": "buku pertama",
+    "author": "juna",
+    "description": "ini buku juna",
+    "year": 2020,
+    "page": 24,
+    "publisher": "ga tau"
   },
   {
-    "id": "6a5188e5-3771-48ba-9c72-aa7460a005e2",
-    "title": "New Book Title1",
-    "author": "New Author1",
-    "description": "Test Description1",
-    "page": 200,
+    "id": "eab78c86-49b9-4bc5-9356-e49f52e9262c",
+    "title": "buku kedua",
+    "author": "dave",
+    "description": "ini buku kedua",
+    "year": 2019,
+    "page": 10,
+    "publisher": "gramedia"
+  },
+  {
+    "id": "e3a635ad-7b7f-4e07-88e7-ee711d1e8435",
+    "title": "buku ketiga",
+    "author": "ivan",
+    "description": "ini buku ketiga",
+    "year": 2024,
+    "page": 10,
     "publisher": "gramedia"
   }
 ]

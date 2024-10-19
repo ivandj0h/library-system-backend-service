@@ -37,22 +37,21 @@ The Endpoints of this backend service application's are :
   "message": "Books fetched successfully",
   "data": [
     {
-      "id": "ebded113-776f-44fb-ab17-5230b013b464",
-      "title": "typescript",
-      "author": "juna",
-      "publishedYear": 2024
+      "id": "038c14e4-8af3-4c9d-981a-d8a888a5a998",
+      "title": "Updated Book Title",
+      "author": "Updated Author",
+      "description": "ini adalah deskripsi",
+      "page": 120,
+      "publisher": "gramedia",
+      "year": 2024
     },
     {
-      "id": "4f76ad08-cde5-4e6a-a665-af7fe00cdd78",
-      "title": "python",
-      "author": "dave",
-      "publishedYear": 2020
-    },
-    {
-      "id": "fad04c6a-9a43-42b1-a747-82ae12afcae6",
-      "title": "dart",
-      "author": "ivandjoh",
-      "publishedYear": 2020
+      "id": "6a5188e5-3771-48ba-9c72-aa7460a005e2",
+      "title": "New Book Title1",
+      "author": "New Author1",
+      "description": "Test Description1",
+      "page": 200,
+      "publisher": "gramedia"
     }
   ]
 }
@@ -78,10 +77,12 @@ The Endpoints of this backend service application's are :
   "status": "success",
   "message": "Book fetched successfully",
   "data": {
-    "id": "ebded113-776f-44fb-ab17-5230b013b464",
-    "title": "typescript",
-    "author": "juna",
-    "publishedYear": 2024
+    "id": "6a5188e5-3771-48ba-9c72-aa7460a005e2",
+    "title": "New Book Title1",
+    "author": "New Author1",
+    "description": "Test Description1",
+    "page": 200,
+    "publisher": "gramedia"
   }
 }
 ```
@@ -95,12 +96,12 @@ The Endpoints of this backend service application's are :
 
 ```json
 {
-  "title": "book1",
-  "author": "john",
-  "description": "this is book 1",
-  "publishedYear": "2024",
-  "page": "100",
-  "publisher": "none"
+  "title": "New Book Title1",
+  "author": "New Author1",
+  "description": "Test Description1",
+  "publishedYear": 2024,
+  "page": 200,
+  "publisher": "gramedia"
 }
 ```
 
@@ -124,12 +125,14 @@ response body :
 ```json
 {
   "status": "success",
-  "message": "Book created successfully",
+  "message": "Book added successfully",
   "data": {
-    "id": "ebded113-776f-44fb-ab17-5230b013b464",
-    "title": "typescript",
-    "author": "juna",
-    "publishedYear": 2024
+    "id": "6a5188e5-3771-48ba-9c72-aa7460a005e2",
+    "title": "New Book Title1",
+    "author": "New Author1",
+    "description": "Test Description1",
+    "page": 200,
+    "publisher": "gramedia"
   }
 }
 ```
@@ -151,12 +154,30 @@ response body :
 
 ```json
 {
-  "title": "book1",
-  "author": "john",
-  "description": "this is book 1",
-  "publishedYear": "2024",
-  "page": "100",
-  "publisher": "none"
+  "title": "Updated Book Title",
+  "author": "Updated Author",
+  "description": "ini adalah deskripsi",
+  "year": 2024,
+  "page": 120,
+  "publisher": "gramedia"
+}
+```
+
+`response body :`
+
+```json
+{
+  "status": "success",
+  "message": "Book updated successfully",
+  "data": {
+    "id": "038c14e4-8af3-4c9d-981a-d8a888a5a998",
+    "title": "Updated Book Title",
+    "author": "Updated Author",
+    "description": "ini adalah deskripsi",
+    "year": 2024,
+    "page": 120,
+    "publisher": "gramedia"
+  }
 }
 ```
 

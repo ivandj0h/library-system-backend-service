@@ -7,5 +7,13 @@
     "page": 120,
     "publisher": "gramedia",
     "year": 2024
+  },
+  {
+    "id": "6a5188e5-3771-48ba-9c72-aa7460a005e2",
+    "title": "New Book Title1",
+    "author": "New Author1",
+    "description": "Test Description1",
+    "page": 200,
+    "publisher": "gramedia"
   }
 ]

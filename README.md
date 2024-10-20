@@ -6,6 +6,17 @@
 
 Library system backend service is a service that provides a RESTful API for managing books. This service is built using Node.js and Express.js. The data is stored in a JSON file for simplicity.
 
+```
+for Database Configurations, 
+
+if USE_MONGODB=true in .env file, 
+
+it would be connect to MongoDB, 
+but if it's false it would be connect and written into json file on data/db.json
+
+the decision is yours
+```
+
 ### Features
 
 The Features of this application's is support `CRUD operations for books`

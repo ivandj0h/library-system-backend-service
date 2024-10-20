@@ -4,14 +4,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register index.ts",
-    "test": "jest --config jest.config.ts --coverage"
+    "test": "jest --config jest.config.ts --coverage",
+    "build": "tsc"
   },
   "dependencies": {
     "@types/express": "^5.0.0",
+    "@types/mongodb": "^4.0.6",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "mongodb": "^6.9.0",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.3",

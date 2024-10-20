@@ -1,3 +1,4 @@
+import "tsconfig-paths/register";
 import dotenv from "dotenv";
 import { createServer } from "http";
 import { AddressInfo } from "net";

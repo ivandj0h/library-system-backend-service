@@ -1,5 +1,5 @@
 interface BookDTO {
-  id?: string | null | undefined;
+  id?: string;
   title: string;
   author: string;
   description: string;

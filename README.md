@@ -220,6 +220,12 @@ npm install
 
 ## Usage
 
+There are two ways to run this project :
+
+### without Docker or Docker Compose or Makefile
+
+`Make sure the USE_MONGODB is set to false in the .env file`
+
 To run the backend service :
 
 ```bash
@@ -232,6 +238,52 @@ To run the unit test :
 
 ```bash
 npm run test
+```
+
+### with Docker
+
+`Make sure the USE_MONGODB is set to true in the .env file`
+
+To run the backend service :
+
+#### Build the Docker Image
+
+```bash
+docker build -t library-system-backend-service .
+
+docker run -p 9000:9000 library-system-backend-service
+```
+
+OR you can use `Docker Compose` :
+
+```bash
+docker-compose up
+```
+
+then if you want to stop the service, you can run the following command :
+
+```bash
+docker-compose down
+```
+
+### with Makefile
+
+To run the backend service :
+
+```bash
+make run
+```
+
+then if you want to stop the service, you can run the following command :
+
+```bash
+make stop
+```
+
+to log container :
+
+```bash
+make log
 ```
 
 ## ScreenShoot

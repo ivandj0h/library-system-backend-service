@@ -8,7 +8,7 @@ class Book {
   public publisher: string;
 
   constructor(
-    id: string,
+    id: string | null | undefined,
     title: string,
     author: string,
     description: string,
@@ -16,7 +16,7 @@ class Book {
     page: number,
     publisher: string
   ) {
-    this.id = id;
+    this.id = id ?? uuidv4();
     this.title = title;
     this.author = author;
     this.description = description;
@@ -24,6 +24,10 @@ class Book {
     this.page = page;
     this.publisher = publisher;
   }
+}
+
+function uuidv4(): string {
+  throw new Error("Function not implemented.");
 }
 
 export { Book };

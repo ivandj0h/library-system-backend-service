@@ -296,4 +296,4 @@ make log
 
 Linkedin : [ivandjoh](https://linkedin.com/in/ivandjoh)
 
-Github : [ivandj0h](https://github.com/ivandj0h)
+Github : [ivandjoh](https://github.com/ivandj0h)

@@ -294,4 +294,6 @@ make log
 
 ## Credits
 
-[ivandjoh](https://linkedin.com/in/ivandjoh)
+Linkedin : [ivandjoh](https://linkedin.com/in/ivandjoh)
+
+Github : [ivandj0h](https://github.com/ivandj0h)
